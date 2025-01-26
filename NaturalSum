@@ -1,0 +1,16 @@
+function naturalSum(N)
+{
+    if(N<0)
+    {
+        return 0;
+    }
+    return N + naturalSum(N-1);
+}
+
+function main()
+{
+    let N=5;
+    console.log(naturalSum(N));
+}
+
+main();
