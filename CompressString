@@ -1,0 +1,29 @@
+function compressString(str)
+{
+    let compressedStr='';
+    let map=new Map();
+    for(let i=0;i<str.length;i++)
+    {
+        if(map.has(str[i]))
+        {
+            map.set(str[i], map.get(str[i])+1);
+        }
+        else
+        {
+            map.set(str[i], 1);
+        }
+    }
+    for(let [key, value] of map)
+    {
+        compressedStr+=key+value;
+    }
+    return compressedStr;
+}
+
+function main()
+{
+    let str="aabbbcccc";
+    console.log(compressString(str));
+}
+
+main();
