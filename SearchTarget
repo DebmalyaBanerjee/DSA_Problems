@@ -1,0 +1,30 @@
+function searchTarget(N, A, X)
+{
+    let left=0;
+    let right=N-1;
+    while(left<=right)
+    {
+        let mid=Math.floor((left+right)/2);
+        if(A[mid]==X) //target element found
+        {
+            return mid;
+        }
+        else if(A[mid]<X) 
+        {
+            left=mid+1; //target element is in the right half
+        }
+        else
+        {
+            right=mid-1; //target element is in the left half
+        }
+    }
+}
+
+function main() {
+    let A = [1,2,3,4,5];
+    let N=A.length;
+    let X=5;
+    console.log(searchTarget(N,A,X));
+}
+
+main();
