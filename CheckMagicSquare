@@ -1,0 +1,98 @@
+function checkMagicSquare(n, matrix) {
+    let sumD1=sumOfDiag1(matrix);
+    let sumD2=sumOfDiag2(matrix);
+    let sumRows=sumOfRows(matrix);
+    let sumCols=sumOfCols(matrix);
+    if(sumD1 == sumD2 && sumD2==sumCols && sumCols==sumRows)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function sumOfDiag1(matrix)
+{
+    let sum=0;
+    for(let i=0;i<matrix.length;i++)
+    {
+        sum+=matrix[i][i];
+    }
+    return sum;
+}
+
+function sumOfDiag2(matrix)
+{
+    let sum=0;
+    let col=matrix.length-1;
+    for(let row=0;row<matrix.length;row++,col--)
+    {
+        sum+=matrix[row][col];
+    }
+    return sum;
+}
+
+function sumOfRows(matrix)
+{
+    let sumR0=iterateRow(matrix, 0);
+    for(let i=1;i<matrix.length;i++)
+    {
+        let tempSum=iterateRow(matrix, i);
+        if(sumR0!==tempSum)
+        {
+            return -1;
+        }
+    }
+    return sumR0;
+}
+
+function sumOfCols(matrix)
+{
+    let sumC0=iterateCol(matrix, 0);
+    for(let i=1;i<matrix.length;i++)
+    {
+        let tempSum=iterateCol(matrix, i);
+        if(sumC0!==tempSum)
+        {
+            return -1;
+        }
+    }
+    return sumC0;
+}
+
+function iterateRow(matrix, rowNo)
+{
+    let sum=0;
+    for(let i=0;i<matrix.length;i++)
+    {
+        sum+=matrix[rowNo][i];
+    }
+    return sum;
+}
+
+function iterateCol(matrix, colNo)
+{
+    let sum=0;
+    for(let i=0;i<matrix.length;i++)
+    {
+        sum+=matrix[i][colNo];
+    }
+    return sum;
+}
+
+function main() {
+    //let n = parseInt(readLine(), 10);
+    let n=5;
+    let matrix = [[1,1,2],[1,1,1],[1,1,1]];
+    let result = checkMagicSquare(n, matrix);
+    if (result == true) {
+        console.log("Yes");
+    }
+    else {
+        console.log("No");
+    }
+}
+
+main();
