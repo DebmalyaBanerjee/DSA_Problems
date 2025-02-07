@@ -1,0 +1,30 @@
+function maxOccurringChar(str) {
+    let freqMap = new Map();
+
+    // Count occurrences of each character
+    for (let char of str) {
+        freqMap.set(char, (freqMap.get(char) || 0) + 1);
+    }
+
+    let maxChar = '';
+    let maxFreq = 0;
+
+    // Find the max occurring character with the lowest ASCII value in case of a tie
+    for (let [char, count] of freqMap) {
+        if (count > maxFreq || (count === maxFreq && char < maxChar)) {
+            maxFreq = count;
+            maxChar = char;
+        }
+    }
+
+    console.log(`${maxChar} ${maxFreq}`);
+}
+
+function main()
+{
+    // Example Usage:
+    const input = "Statements are unique.";
+    maxOccurringChar(input); // Output: "e 4"
+}
+
+main();
