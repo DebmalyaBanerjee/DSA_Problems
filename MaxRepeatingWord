@@ -1,0 +1,39 @@
+function mostFrequentWord(N, arr) {
+    let freqMap = new Map();
+
+    // Count frequency of each word
+    for (let word of arr) {
+        freqMap.set(word, (freqMap.get(word) || 0) + 1);
+    }
+
+    let maxFrequency = 0;
+    let resultWord = "";
+
+    // Find the most frequent word with lexicographical order
+    for (let [word, freq] of freqMap) {
+        if (freq > maxFrequency || (freq === maxFrequency && word < resultWord)) {
+            maxFrequency = freq;
+            resultWord = word;
+        }
+    }
+
+    return resultWord;
+}
+
+function main()
+{
+    // Example Usage:
+    const input = [
+    "apple",
+    "banana",
+    "apple",
+    "orange",
+    "banana",
+    "banana"
+    ];
+    console.log(mostFrequentWord(input.length, input)); // Output: "banana"
+}
+
+main();
+
+
