@@ -1,0 +1,33 @@
+function intersectSorted(N, A, M, B) {
+    let freqMap = new Map();
+    let result = [];
+
+    // Count occurrences of elements in A
+    for (let num of A) {
+        freqMap.set(num, (freqMap.get(num) || 0) + 1);
+    }
+
+    // Check elements of B in A
+    for (let num of B) {
+        if (freqMap.has(num) && freqMap.get(num) > 0) {
+            result.push(num);
+            freqMap.set(num, freqMap.get(num) - 1);
+        }
+    }
+
+    // Sort the result
+    return result.sort((a, b) => a - b).join(" ");
+}
+
+function main()
+{
+    // Example Usage:
+    const N = 4;
+    const A = [1, 2, 2, 1];
+    const M = 2;
+    const B = [2, 2];
+    console.log(intersectSorted(N, A, M, B));  // Output: "2 2"
+}
+
+main();
+
