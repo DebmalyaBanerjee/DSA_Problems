@@ -1,0 +1,25 @@
+function findUnique(N, arr) {
+    let freqMap = new Map();
+
+    // Count occurrences of each element
+    for (let num of arr) {
+        freqMap.set(num, (freqMap.get(num) || 0) + 1);
+    }
+
+    // Find and return the element with frequency 1
+    for (let [num, count] of freqMap) {
+        if (count === 1) {
+            return num;
+        }
+    }
+}
+
+function main()
+{
+    // Example Usage:
+    const N = 3;
+    const arr = [2, 2, 1];
+    console.log(findUnique(N, arr));  // Output: 1
+}
+
+main();
