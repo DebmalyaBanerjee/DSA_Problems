@@ -1,0 +1,17 @@
+function countDistinct(n, arr) {
+    // Use a Set to store unique elements
+    let uniqueValues = new Set(arr);
+    
+    // Output the count of unique elements
+    console.log(uniqueValues.size);
+}
+
+function main()
+{
+    // Example Usage:
+    const n = 5;
+    const arr = [2, 3, 2, 2, 3];
+    countDistinct(n, arr); // Output: 2
+}
+
+main();
