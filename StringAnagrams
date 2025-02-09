@@ -1,0 +1,26 @@
+function findAnagrams(str, N, arr) {
+    let sortedStr = str.split('').sort().join(''); // Sorted signature of str
+    let result = [];
+
+    // Check each word in arr
+    for (let word of arr) {
+        if (word.split('').sort().join('') === sortedStr) {
+            result.push(word);
+        }
+    }
+
+    // Sort the result lexicographically
+    return result.sort();
+}
+
+function main()
+{
+    // Example Usage:
+    const str = "abc";
+    const N = 3;
+    const arr = ["cab", "bac", "xyz"];
+    console.log(findAnagrams(str, N, arr)); // Output: ["bac", "cab"]
+}
+
+main();
+
