@@ -1,0 +1,14 @@
+function countUniqueWords(n, words) {
+    let uniqueWords = new Set(words);
+    console.log(uniqueWords.size);
+}
+
+function main()
+{
+    // Example Usage:
+    const n = 7;
+    const words = ["Java", "is", "great", "Grails", "is", "also", "great"];
+    countUniqueWords(n, words); // Output: 5
+}
+
+main();
