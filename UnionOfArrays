@@ -1,0 +1,21 @@
+function unionOfArrays(n, m, A, B) {
+    // Create a Set to store unique elements from both arrays
+    let resultSet = new Set([...A, ...B]);
+
+    // Convert set back to an array and sort it
+    let resultArray = Array.from(resultSet).sort((a, b) => a - b);
+
+    return resultArray;
+}
+
+function main()
+{
+    // Sample input
+    let n = 5, m = 3;
+    let A = [1, 2, 3, 4, 5];
+    let B = [1, 2, 3];
+    console.log(unionOfArrays(n, m, A, B)); 
+}
+
+main();
+
