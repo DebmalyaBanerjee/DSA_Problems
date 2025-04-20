@@ -1,0 +1,34 @@
+function twoSumInSortedArray() {
+    let arr=[2, 4, 5, 8, 9];
+    let n=arr.length;
+    let target_sum=7;
+    let a=[];
+    for(let i=0;i<n;i++)
+    {
+        a.push([arr[i], i]);
+    }
+    a.sort((a,b) => a[0] - b[0]);
+    
+    let left=0;
+    let right=n-1;
+    while(left<right)
+    {
+        let currSum=a[left][0] + a[right][0];
+        if(currSum === target_sum)
+        {
+            return true;
+        }
+        else if(currSum > target_sum)
+        {
+            right--;
+        }
+        else
+        {
+            left++;
+        }
+    }
+    return false;
+}
+
+let isPresent=twoSumInSortedArray();
+console.log(isPresent);
