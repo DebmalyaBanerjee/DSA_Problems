@@ -1,0 +1,41 @@
+function mergeSortedArrays() {
+    // Read input
+    let nums1=[1,2,3,4,5];
+    let nums2=[6,7,8,9,10];
+
+    let M=nums1.length;
+    let N=nums2.length;
+    
+    // Merge arrays
+    const merged = [];
+    let i = 0, j = 0;
+    
+    // Compare and merge elements in sorted order
+    while (i < M && j < N) {
+        if (nums1[i] <= nums2[j]) {
+            merged.push(nums1[i]);
+            i++;
+        } else {
+            merged.push(nums2[j]);
+            j++;
+        }
+    }
+    
+    // Add remaining elements from nums1, if any
+    while (i < M) {
+        merged.push(nums1[i]);
+        i++;
+    }
+    
+    // Add remaining elements from nums2, if any
+    while (j < N) {
+        merged.push(nums2[j]);
+        j++;
+    }
+    
+    // Print result
+    console.log(merged.join(" "));
+}
+
+// Run the function
+mergeSortedArrays();
