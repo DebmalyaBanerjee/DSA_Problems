@@ -1,0 +1,29 @@
+function maxArea(height) {
+    let left = 0;
+    let right = height.length - 1;
+    let maxArea = 0;
+
+    while (left < right) {
+        // Calculate the area
+        let width = right - left;
+        let h = Math.min(height[left], height[right]);
+        let area = width * h;
+
+        // Update max area if current area is larger
+        maxArea = Math.max(maxArea, area);
+
+        // Move the pointer pointing to the shorter line
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+
+    return maxArea;
+    
+}
+
+let height=[1, 8, 6, 2, 5, 4, 8, 3, 7];
+let maximumArea=maxArea(height);
+console.log(maximumArea);
