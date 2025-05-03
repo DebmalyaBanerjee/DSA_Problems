@@ -1,0 +1,17 @@
+function contigiousSequence(n, arr) {
+    let sum=0;
+    let max=Number.MIN_SAFE_INTEGER;
+    for(let i=0;i<n;i++)
+    {
+        sum=Math.max(sum+arr[i], arr[i]); //max of sum + arr[i] and arr[i]
+        max=Math.max(sum,max); // max of sum and max
+    }
+    return max;
+}
+function main()
+{
+    let arr=[-2, -3, 4, -1, -2, 1, 5, -3];
+    let n=arr.length;
+    console.log(contigiousSequence(n, arr));
+}
+main();
