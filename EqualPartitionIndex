@@ -1,0 +1,28 @@
+function equalPartition(n, arr) {
+    let prefix=[];
+    let suffix=[];
+    
+    for(let i=0;i<n;i++)
+    {
+        prefix[i]=((i==0)?0:prefix[i-1])+arr[i];
+    }
+    for(let i=n-1;i>=0;i--)
+    {
+        suffix[i]=((i==n-1)?0:suffix[i+1])+arr[i];
+    }
+    for(let i=0;i<n;i++)
+    {
+        if(prefix[i]==suffix[i])
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+function main()
+{
+    let arr=[1, 4, 2, 5];
+    let n=arr.length;
+    console.log(equalPartition(n, arr));
+}
+main();
