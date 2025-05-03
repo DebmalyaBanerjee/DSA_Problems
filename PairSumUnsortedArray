@@ -1,0 +1,36 @@
+function twoSum(nums, target) {
+    // Create an array of [number, index] pairs
+    let numIndices = nums.map((num, index) => [num, index]);
+    
+    // Sort the array based on the numbers
+    numIndices.sort((a, b) => a[0] - b[0]);
+
+    // Initialize two pointers
+    let left = 0;
+    let right = numIndices.length - 1;
+
+    while (left < right) {
+        const sum = numIndices[left][0] + numIndices[right][0];
+        
+        if (sum === target) {
+            // Get the original indices and sort them
+            let index1 = numIndices[left][1];
+            let index2 = numIndices[right][1];
+            return [index1, index2].sort((a, b) => a - b);
+        } else if (sum < target) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+
+    // If no solution is found (though the problem guarantees there is one)
+    throw new Error("No two sum solution");
+}
+function main()
+{
+    let nums=[2, 4, 5, 9, 8];
+    let target=7;
+    console.log(twoSum(nums, target));
+}
+main();
