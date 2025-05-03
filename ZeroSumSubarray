@@ -1,0 +1,22 @@
+function subarraySumZero(n, arr) {
+    let sum=0;
+    let hashMap={};
+    for(let i=0;i<n;i++)
+    {
+      sum+=arr[i];
+      if(sum == 0 || 
+         hashMap[sum])
+      {
+        return "Yes";
+      }
+      hashMap[sum]=1;
+    }
+    return "No";
+}
+function main()
+{
+    let arr=[4, 2, -2, 5];
+    let n=arr.length;
+    console.log(subarraySumZero(n, arr));
+}
+main();
