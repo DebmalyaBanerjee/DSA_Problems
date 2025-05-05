@@ -1,0 +1,25 @@
+function maximumSubarraySumSizeK(N,A,K) {
+    let start_idx=0, end_idx=K-1;
+    let current_sum=0;
+    for(let i=start_idx;i<=end_idx;i++)
+    {
+        current_sum+=A[i];
+    } 
+    let ans_sum=current_sum;
+    while(end_idx<N-1)
+    {
+        start_idx++;
+        end_idx++;
+        current_sum = current_sum - A[start_idx - 1] + A[end_idx];
+        ans_sum=Math.max(ans_sum, current_sum);
+    }
+    return ans_sum;
+}
+function main()
+{
+    let arr=[100, 200, 300, 400];
+    let n=arr.length;
+    let k=2;
+    console.log(maximumSubarraySumSizeK(n,arr,k));
+}
+main();
