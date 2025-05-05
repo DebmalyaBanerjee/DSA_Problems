@@ -1,0 +1,37 @@
+function lengthOfLongestSubstringKDistinct(s, k) {
+    let left=0, right=0, ans=0;
+    let map = new Map();
+    while(right < s.length)
+    {
+      //include right characters in map
+      if(!map.has(s[right]))
+      {
+        map.set(s[right], 1);//set the value for the key
+      }
+      else
+      {
+        map.set(s[right], map.get(s[right])+1);//update the value for the key
+      }
+  
+      while(map.size > k)
+      {
+        //keep excluding left characters until valid window.
+        map.set(s[left], map.get(s[left])-1);
+        if(map.get(s[left]) == 0)
+        {
+          map.delete(s[left]);
+        }
+        left++;
+      }
+      ans=Math.max(ans, right - left + 1);
+      right++;
+    }
+    return ans;
+  }
+  function main()
+  {
+    let str="abacd";
+    let k=3;
+    console.log(lengthOfLongestSubstringKDistinct(str,k));
+  }
+  main();
