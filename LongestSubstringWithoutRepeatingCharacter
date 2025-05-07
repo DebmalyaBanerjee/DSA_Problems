@@ -1,0 +1,22 @@
+function longestSubstringWithoutRepeatingCharacter(s) {
+    let left=0, right=0, max_length=0;
+    let setElements=new Set();
+    while(right<s.length)
+    {
+        while(setElements.has(s[right]))
+        {
+            setElements.delete(s[left]);
+            left++;
+        }
+        setElements.add(s[right]);
+        max_length=Math.max(max_length, right-left+1);
+        right++;
+    }
+    return max_length;
+}
+function main()
+{
+    let str="cdddddd";
+    console.log(longestSubstringWithoutRepeatingCharacter(str));
+}
+main();
